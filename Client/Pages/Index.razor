@@ -1,7 +1,30 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<h2>Recently Updates</h2>
+
+@if (RecentlyUpdates != null)
+{
+    <ul>
+        @foreach (var update in RecentlyUpdates)
+        {
+            <li>@update</li>
+        }
+    </ul>
+}
+
+
+@code {
+    string[] RecentlyUpdates;
+
+    protected override async Task OnInitializedAsync()
+    {
+        RecentlyUpdates = await Http.GetFromJsonAsync<string[]>("RecentlyUpdates");
+    }
+}
