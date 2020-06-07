@@ -45,7 +45,7 @@ else
     {
         try
         {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("authorized/WeatherForecast");
         }
         catch (AccessTokenNotAvailableException exception)
         {
