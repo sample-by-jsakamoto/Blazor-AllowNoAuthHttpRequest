@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorWasmApp.Client
 {
@@ -18,8 +19,19 @@ namespace BlazorWasmApp.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            builder.Services.AddTransient<AuthorizationMessageHandler>(sp =>
+            {
+                var provider = sp.GetRequiredService<IAccessTokenProvider>();
+                var naviManager = sp.GetRequiredService<NavigationManager>();
+                var handler = new AuthorizationMessageHandler(provider, naviManager);
+                handler.ConfigureHandler(authorizedUrls: new[] {
+                    naviManager.ToAbsoluteUri("authorized/").AbsoluteUri
+                });
+                return handler;
+            });
+
             builder.Services.AddHttpClient("BlazorWasmApp.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-                .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+                .AddHttpMessageHandler<AuthorizationMessageHandler>();
 
             // Supply HttpClient instances that include access tokens when making requests to the server project
             builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("BlazorWasmApp.ServerAPI"));
