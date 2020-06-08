@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.36
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmApp.Server", "Server\BlazorWasmApp.Server.csproj", "{9C323B68-BB78-45EE-BE6F-A956EC73AC2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmApp.Server", "Server\BlazorWasmApp.Server.csproj", "{9C323B68-BB78-45EE-BE6F-A956EC73AC2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmApp.Client", "Client\BlazorWasmApp.Client.csproj", "{2FFD31F4-1101-4CE0-B29A-12327C62D05E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmApp.Client", "Client\BlazorWasmApp.Client.csproj", "{2FFD31F4-1101-4CE0-B29A-12327C62D05E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmApp.Shared", "Shared\BlazorWasmApp.Shared.csproj", "{1F468A85-E57E-4778-985B-A85D7C197ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmApp.Shared", "Shared\BlazorWasmApp.Shared.csproj", "{1F468A85-E57E-4778-985B-A85D7C197ABD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{650C9D41-7616-4B96-BC45-9CB46A386539}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
